@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Description extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 
     //Relacion uno a uno inversa
     public function lesson():BelongsTo{

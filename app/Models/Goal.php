@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Goal extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 
     //Relacion uno a muchos inversa
     public function course():BelongsTo{

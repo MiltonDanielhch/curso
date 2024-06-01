@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Resource extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 
     public function resourceable():MorphTo{
         return $this->morphTo();

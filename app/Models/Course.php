@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 class Course extends Model
 {
     use HasFactory;
+    protected $guarded = ['id', 'status'];
 
     const BORRADOR = 1, REVISION = 2, PUBLICADO = 3;
 

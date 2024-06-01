@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Comment extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 
     //relacion uno a muchos inversa
     public function user():BelongsTo{

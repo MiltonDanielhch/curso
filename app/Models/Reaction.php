@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Reaction extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 
     const LIKE = 1, DISLIKE = 2;
 
