@@ -4,6 +4,9 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -61,5 +64,36 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    //Relacion uno a uno
+    public function profile():HasOne{
+        return $this->hasOne(Profile::class);
+    }
+
+     //Relacion uno a muchos
+     public function courses_dictated():HasMany{
+        return $this->hasMany(Course::class);
+    }
+
+     //Relacion uno a muchos
+     public function reviews():HasMany{
+        return $this->hasMany(Review::class);
+    }
+
+    public function comments():HasMany{
+        return $this->hasMany(Comment::class);
+    }
+
+    public  function reactions():HasMany{
+        return $this->hasMany(Reaction::class);
+    }
+
+    //Relacion muchos a muchos
+    public function courses_enrolled():BelongsToMany{
+        return $this->belongsToMany(Course::class);
+    }
+    public function lessons(){
+        return $this->belongsToMany(Lesson::class);
     }
 }
